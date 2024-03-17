@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sisfo_application_v1/view/Fitur/izin.dart';
 import 'package:sisfo_application_v1/view/Fitur/lorong.dart';
 import 'package:sisfo_application_v1/view/Fitur/monitoring.dart';
 
 import '../../theme/constant.dart';
+import '../Fitur/izin/izin.dart';
 import '../Fitur/presence/all_presence.dart';
 import 'button_menu.dart';
 

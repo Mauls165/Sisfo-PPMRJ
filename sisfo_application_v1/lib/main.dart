@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sisfo_application_v1/view/Fitur/izin.dart';
+import 'package:sisfo_application_v1/view/Fitur/izin/add_izin.dart';
 import 'package:sisfo_application_v1/view/Fitur/lorong.dart';
 import 'package:sisfo_application_v1/view/Fitur/monitoring.dart';
 import 'package:sisfo_application_v1/view/Fitur/presence/all_presence.dart';
 import 'package:sisfo_application_v1/view/HomePage/main_app.dart';
 import 'package:sisfo_application_v1/view/Onboarding/Onboarding1.dart';
+
+import 'view/Fitur/izin/izin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +27,8 @@ class MyApp extends StatelessWidget {
         '/izin': (context) => IzinPage(),
         '/lorong': (context) => Lorong(),
         '/monitoring': (context) => Monitoring(),
+        '/add_izin': (context) => Add_Izin(),
+
         // Tambahkan rute untuk halaman lainnya di sini
       },
     );
