@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sisfo_application_v1/view/widgets/header_fitur.dart';
 
-import '../../theme/constant.dart';
-import '../HomePage/main_app.dart';
+import '../../../theme/constant.dart';
+import '../../HomePage/main_app.dart';
 
 class IzinPage extends StatelessWidget {
   const IzinPage({super.key});
@@ -23,8 +23,8 @@ class IzinPage extends StatelessWidget {
           child: Column(
             children: [
               HeaderFeature(title: 'Izin Saya', currentIndex: 2),
-              _buildIzinCard('+ Buat izin'),
-              _buildIzinCard('+ Buat izin berjangka'),
+              _buildIzinCard('+ Buat izin', context),
+              _buildIzinCard('+ Buat izin berjangka', context),
             ],
           ),
         ),
@@ -33,7 +33,7 @@ class IzinPage extends StatelessWidget {
   }
 }
 
-Widget _buildIzinCard(String label) {
+Widget _buildIzinCard(String label, BuildContext context) {
   return Padding(
     //_buildIzinCard()
     padding: const EdgeInsets.symmetric(
@@ -47,7 +47,7 @@ Widget _buildIzinCard(String label) {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            _IzinButton(label),
+            _IzinButton(label, context),
             dataTable(),
           ],
         ),
@@ -56,9 +56,11 @@ Widget _buildIzinCard(String label) {
   );
 }
 
-Widget _IzinButton(String label) {
+Widget _IzinButton(String label, BuildContext context) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.pushNamed(context, '/add_izin');
+    },
     child: Container(
       width: double.maxFinite,
       padding: EdgeInsets.symmetric(vertical: 8),
