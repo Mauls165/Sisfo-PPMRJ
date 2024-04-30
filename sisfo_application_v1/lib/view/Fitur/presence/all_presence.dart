@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sisfo_application_v1/view/widgets/header_fitur.dart';
-
-import '../../HomePage/main_app.dart';
+// import '../../HomePage/main_app.dart';
 import '../../widgets/weekly_table.dart';
 
 class AllPresence extends StatelessWidget {
@@ -12,10 +11,10 @@ class AllPresence extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         // Ketika pengguna menekan tombol back
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const MainHomePage()),
-        );
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => const MainHomePage()),
+        // );
         return true; // Kembali ke halaman sebelumnya
       },
       child: Scaffold(

@@ -3,11 +3,15 @@ import 'package:sisfo_application_v1/theme/constant.dart';
 import 'package:sisfo_application_v1/view/widgets/button_menu.dart';
 // import 'package:sisfo_application_v1/view/widgets/side_bar.dart';
 import 'package:sisfo_application_v1/view/widgets/weekly_table.dart';
-
+import 'package:sisfo_application_v1/view_model/santriVM.dart';
+import 'package:provider/provider.dart';
 // import '../widgets/bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key});
+  final int userId;
+  final SantriViewModel santriViewModel; // Tambahkan parameter SantriViewModel
+  const HomePage(
+      {Key? key, required this.userId, required this.santriViewModel});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -15,6 +19,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Panggil metode fetchSantri dari santriViewModel saat halaman diinisialisasi
+    widget.santriViewModel.fetchSantri(widget.userId);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,42 +77,48 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHeader() {
-    return Builder(builder: (context) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.only(bottom: 8),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hi,',
-                  style: AppTextStyle.BodyTxt(),
-                ),
-                Text(
-                  'UserName',
-                  style: AppTextStyle.HeaderTxt(1, fontSize: 20),
-                ), //username
-                Text(
-                  'Koor Lorong',
-                  style: AppTextStyle.BodyTxt(),
-                ), //dapukkan di ppm
-              ],
+    return ChangeNotifierProvider.value(
+      value: widget.santriViewModel,
+      child: Builder(builder: (context) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.only(bottom: 8),
+              child: Consumer<SantriViewModel>(
+                  builder: (context, santriViewModel, _) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Hi,',
+                      style: AppTextStyle.BodyTxt(),
+                    ),
+                    Text(
+                      '${santriViewModel.user?.fullname}',
+                      style: AppTextStyle.HeaderTxt(1, fontSize: 20),
+                    ), //username
+                    Text(
+                      'NIS ${santriViewModel.santri?.nis}',
+                      style: AppTextStyle.BodyTxt(),
+                    ), //dapukkan di ppm
+                  ],
+                );
+              }),
             ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications_none_rounded,
-              size: 32,
-            ),
-          )
-        ],
-      );
-    });
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.notifications_none_rounded,
+                size: 32,
+              ),
+            )
+          ],
+        );
+      }),
+    );
   }
 
   Widget _buildDataUser() {
