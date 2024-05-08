@@ -4,8 +4,9 @@ import 'package:sisfo_application_v1/theme/constant.dart';
 // ignore: camel_case_types
 class login_field extends StatelessWidget {
   final String labelText;
-  // final TextEditingController controller;
-  const login_field({super.key, required this.labelText});
+  final TextEditingController controller;
+  const login_field(
+      {super.key, required this.labelText, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class login_field extends StatelessWidget {
             ),
           ),
         ),
+        controller: controller,
       ),
     );
   }

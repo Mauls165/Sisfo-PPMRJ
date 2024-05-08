@@ -42,6 +42,7 @@ class PopIn extends StatelessWidget {
                 children: [
                   Text(
                     title, //title
+
                     style: AppTextStyle.MainHeaderTxt(fontSize: 20),
                   ),
                   const SizedBox(
