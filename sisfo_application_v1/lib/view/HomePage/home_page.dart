@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sisfo_application_v1/theme/constant.dart';
 import 'package:sisfo_application_v1/view/widgets/button_menu.dart';
-// import 'package:sisfo_application_v1/view/widgets/side_bar.dart';
 import 'package:sisfo_application_v1/view/widgets/weekly_table.dart';
 import 'package:sisfo_application_v1/view_model/santriVM.dart';
 import 'package:provider/provider.dart';
-// import '../widgets/bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {
   final int userId;
